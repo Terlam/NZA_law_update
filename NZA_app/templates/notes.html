@@ -1,10 +1,32 @@
- <!-- Navigation List -->
- <div class="navbar">
-    <ul>
-        <li><a href="who.html">WHO WE ARE |</a></li>
-        <li><a href="what.html">WHAT WE DO |</a></li>
-        <li><a href="#">NEWS & EVENTS |</a></li>
-        <li><a href="#">WHERE WE WORK |</a></li>
-        <li><a href="#">CONTACT US</a></li>
-    </ul>
-</div> 
+ {% extends 'base.html %} 
+ 
+ {% block content %}
+
+    <div class="container">
+        <h1> Here, you can input new case notes for oyur client.</h1>
+        <h3> Once completed, you may submit your files below. </h3>
+
+        <form method= 'POST'>
+            {{ post_form.hidden.tag }}
+            <div class="form-group">
+                <fieldset>
+                    {{ post_form.title.label}}
+                    {{ post_form.title(class = 'form-control', placeholder = "Case Number Here")}}
+                </fieldset>
+
+                <fieldset>
+                    {{ post_form.name.label }}
+                    {{ post_form.name(class = 'form-control', placeholder = "Name of Client")}}
+                </fieldset>
+
+                <fieldset>
+                    {{ post_form.content.label }}
+                    {{ post_form.content(class = 'form-control', placeholder = "Add your notes here.")}}
+                </fieldset>
+                {{ user_form.submit(class = 'btn btn-success' )}}
+            </div>
+           
+        </form>
+    </div>
+
+{% endblock content %}
