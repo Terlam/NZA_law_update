@@ -10,11 +10,28 @@
 <link rel="stylesheet" href="../static/css/styles.css">
 <title>Title</title>
 </head>
-<body>
 
+<body>
+ <!-- Navigation List -->
+ <div class="navbar">
+    <ul>
+        <li><a href="who.html">WHO WE ARE |</a></li>
+        <li><a href="what.html">WHAT WE DO |</a></li>
+        <li><a href="#">NEWS & EVENTS |</a></li>
+        <li><a href="#">WHERE WE WORK |</a></li>
+        <li><a href="#">CONTACT US</a></li>
+    </ul>
+</div>
+    {% block content %}
+
+#Essentially all content from html's goes here.
+
+    {% endblock content %}
+    #If we have a footer put HERE
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
+
