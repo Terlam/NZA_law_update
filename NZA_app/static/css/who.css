@@ -1,0 +1,178 @@
+body{
+    margin-top: 40px;
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-bottom: 40px;
+    background-image: url(https://i.pinimg.com/originals/09/64/25/09642539eb8b3ab544b2f33848b0c67a.jpg);
+}
+
+.grid-wrapper{
+    margin-left: 15%;
+    margin-right: 15%;
+    display: grid;
+    width: 60vw;
+    height: 120vh;
+    background-color: white;
+    column-gap: 10px;
+    row-gap: 10px;
+    padding: 10px;
+    border: 10px;
+    grid-template-columns: 30% 70%;
+    grid-template-rows: 15% 15% 55% 15%;
+    grid-template-areas: 
+    "header     header"
+    "box-text   plaintext"
+    "box-text   rectangles"
+    "footer     footer"
+    ;
+
+}
+footer{
+    grid-area: footer;
+    /* background-color: chocolate; */
+    font-size: small;
+    font-family: Helvetica
+
+}
+
+footer p{
+    font-size: x-small;
+    text-align: center;
+}
+.navfooter{
+    text-align: center;
+  
+}
+
+header{
+    grid-area: header;
+}
+
+/* Navigation Bar */
+.navbar ul {
+    list-style-type: none;
+    border: 20px;
+    font-size: .6em;
+    font-family: Helvetica;
+    text-align: center;
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+    padding: 5px;
+  }
+  li {
+    display: inline;
+    
+  }
+  li a{
+      text-decoration: none;
+      color: black;
+
+  }
+
+.who-box{
+    grid-area: box-text;
+    background-color: maroon;
+    /* width: 220px;
+    height: 405px;
+    margin-block-start: 15px; */
+}
+
+.what-box{
+    grid-area: box-text;
+    background-color: maroon;
+    border: 5px solid white;
+    /* width: 220px;
+    height: 513px; */
+}
+
+h3{
+    margin-inline-start: 10px;
+    margin-inline-end: 10px;
+    color: white;
+    font-family: Helvetica;
+    font-size: 1em;
+    grid-area: box-text;
+}
+
+hr {
+    unicode-bidi: isolate;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 10px;
+    margin-inline-end: 45px;
+    overflow: hidden;
+    border-style: inset;
+    border-width: 1px;
+    grid-area: box-text;
+}
+
+h4 {
+    margin-inline-start: 10px;
+    color: white;
+    font-family: Helvetica;
+    font-size: .8em;
+    grid-area: box-text;
+}
+
+h5 {
+    font-size: 0.7em;
+    margin-block-start: 0.6em;
+    margin-block-end: -2.2em;
+    margin-inline-start: 10px;
+    color: white;
+    font-family: Helvetica;
+    grid-area: box-text;
+}
+
+.sub{
+    color: white;
+    font-family: Helvetica;
+    font-size: .7em;
+    grid-area: box-text;
+}
+
+.lit{
+    color: white;
+    font-family: Helvetica;
+    font-size: .7em;
+    grid-area: box-text;
+}
+.biz{
+    color: white;
+    font-family: Helvetica;
+    font-size: .7em;
+    grid-area: box-text;
+}
+
+#redbox_pic{
+    border: 0.1em solid white;
+    margin-inline-start: 11px;
+    margin-bottom: -10px;
+    grid-area: box-text;
+}
+
+.who-text>p{
+    grid-area: plaintext;
+    font-family: helvetica;
+    text-align:left;
+    justify-content: left;
+    font-size: .7rem;
+    line-height: 1rem;
+    padding-right: 20px;
+}
+    
+.rectangles{
+    grid-area: rectangles;
+    margin-block-start: 60px;
+    margin-block-end: 5px;
+    display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-gap: 2px;
+}
+
+
+img {
+    max-width: 100%;
+}
+
+
