@@ -1,4 +1,4 @@
-from flask_api import app
+from NZA_app import app
 
 from faker_seed_db import seedData
 
