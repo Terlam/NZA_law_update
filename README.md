@@ -15,7 +15,8 @@ index.html page and styling
 
 
 <!-- Josey's  Work--><!-- Test -->
-redbox on what page
+redbox on what page 
+Will get right on that!
 
 
 <!-- Stephanie's Work -->
