@@ -3,21 +3,21 @@
 {% block content %}
 
     <div class="container">
-        <h1> Welcome! Please login to your to see your cases. </h1>
+        <h1>Please login to receive your API token/key</h1>
         <form method = 'POST'>
             {{ login_form.hidden_tag() }}
-            <div class = "form-group">
+            <div class="form-group">
                 <fieldset>
                     {{ login_form.email.label }}
-                    {{ login_form.email(class = 'form-control', placeholder = 'Email')}}
+                    {{ login_form.email(class = 'form-control', placeholder = "Email Here") }}
                 </fieldset>
-
                 <fieldset>
                     {{ login_form.password.label }}
-                    {{ login_form.password(class = 'form-control', placeholder = 'Password' )}}
+                    {{ login_form.password(class = 'form-control', placeholder = "Password Here") }}
                 </fieldset>
-                {{login_form.submit(class = 'btn btn-success')}}
+                {{ login_form.submit(class = 'btn btn-success') }}
             </div>
         </form>
     </div>
-{% endblock content %}
+
+{% endblock content %} <!--Test-->
