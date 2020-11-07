@@ -25,33 +25,9 @@ class Casenote(db.Model):
         self.user_id = user_id
 
     def __repr__(self):
-        return f'The title of the posat is {self.title} \n and the content is {self.content}'
+        return f'The title of the Case Note is {self.title} \n and the content is {self.content}'
 
-class Client(db.Model):
-    id = db.Column(db.Integer, primary_key = True)
-    name = db.Column(db.String(75), nullable = False)
-    case_num = db.Column(db.String(18), nullable = False)
-    phone_num = db.Column(db.String(14), nullable = False)
-    address = db.Column(db.String(30), nullable = False)
-    legal_dep = db.Column(db.String(40), nullable = False)
-    email = db.Column(db.String(60), nullable = False)
-
-    def __init__(self,name,case_num,phone_num,address,legal_dep, id=id)
-        self.name = name
-        self.case_num = case_num
-        self.phone_num = phone_num
-        self.address = address
-        self.legal_dep = legal_dep
-
-    def __repr__(self):
-        return f'Client(s) profile initiated.'
-
-class ClientSchema(ma.Schema):
-    class Meta:
-        fields = ['id', 'name', 'case_num', 'phone_num', 'address', 'legal_dep']
-
-client_schema = ClientSchema()
-clients_schema = ClientSchema(many = True)
+# removed the client model - T
 
 @login_manager.user_loader
 def load_user(user_id):
