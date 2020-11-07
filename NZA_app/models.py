@@ -8,6 +8,25 @@ from flask_login import UserMixin
 
 from werkzeug.security import generate_password_hash, check_password_hash
 
+# Creation of the Casenote Model
+# The Casenote model will have an 
+# id, title, content, date_created
+# user_id
+class Casenote(db.Model):
+    id = db.Column(db.Integer, primary_key = True)
+    title = db.Column(db.String(100))
+    content = db.Column(db.String(300))
+    date_created = db.Column(db.DateTime, nullable = False, default = datetime.utcnow)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable = False)
+
+    def __init__(self,title,content,user_id):
+        self.title = title
+        self.content=content
+        self.user_id = user_id
+
+    def __repr__(self):
+        return f'The title of the posat is {self.title} \n and the content is {self.content}'
+
 class Client(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.String(75), nullable = False)
