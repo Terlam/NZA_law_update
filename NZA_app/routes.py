@@ -12,7 +12,11 @@ from NZA_app.forms import UserForm, LoginForm
 
 @app.route('/')
 def home():
+<<<<<<< HEAD
     return render_template('index.html')
+=======
+    return render_template('home.html')
+>>>>>>> 5d1829cf882aee9482de28a835b1f4c50e0ac5f3
 
 @app.route('/who')
 def who():
@@ -55,7 +59,6 @@ def login():
     return render_template('login.html', login_form = form)
 
 @app.route('/logout')
-@login_required
 def logout():
     logout_user()
     return redirect(url_for('home'))
@@ -88,6 +91,57 @@ def refresh_key():
     return render_template('token_refresh.html', new_token = new_token)
 
 #Endpoint for Creating Case Notes!!
+@app.route('/notes', methods = ['GET', 'POST'])
+@login_required
+def notes():
+    form = PostForm()
+    if request.method == 'POST' and form.validate():
+        title = form.title.data
+        content = form.content.data
+        user_id = current_user.id
+        post = Post(title,content,user_id)
+
+        db.session.add(post)
+
+        db.session.commit()
+        return redirect(url_for('home'))
+    return render_template('notes.html', post_form = form)
+
+# post detail route to display info about a post
+@app.route('/notes/<int:post_id>')
+@login_required
+def note_detail(post_id):
+    post = Post.query.get_or_404(post_id)
+    return render_template('note_detail.html', post = post)
+
+@app.route('/notes/update/<int:post_id>', methods = ['GET', 'POST'])
+@login_required
+def note_update(post_id):
+    post = Post.query.get_or_404(post_id)
+    form = PostForm()
+
+    if request.method == 'POST' and form.validate():
+        title = form.title.data
+        content = form.content.data
+        user_id = current_user.id
+
+        # Update the database with the new Info
+        post.title = title
+        post.content = content
+        post.user_id = user_id
+
+        # Commit the changes to the database
+        db.session.commit()
+        return redirect(url_for('home'))
+    return render_template('note_update.html', update_form = form)
+
+@app.route('/notes/delete/<int:post_id>',methods = ['GET','POST', 'DELETE'])
+@login_required  
+def note_delete(post_id):
+    post = Post.query.get_or_404(post_id)
+    db.session.delete(post)
+    db.session.commit()
+    return redirect(url_for('home'))
 
 
 # Creation of posts route
