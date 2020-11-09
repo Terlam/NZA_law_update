@@ -1,6 +1,4 @@
-<!-- Terrell's -->
-
-- Terrell 
+<!-- Terrell's --> 
 
 <!-- Alax's Work-->
 
