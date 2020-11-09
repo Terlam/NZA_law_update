@@ -33,6 +33,23 @@
         <div class="Welcome"> 
         <h1>Welcome to our website!</h1>
             <p>Nielsen, Zehe & Antas, PC is a nationally recognized and respected law firm that offers its clients big firm experience and talent in a smaller firm environment. Our reputation is very important to us. We solve our client's problem in some situation and prevent them all together in other situations. We welcome you to our website to learn more about us.</p>
+            
+            <!-- Login Name info -->
+            <h5>You are logged in {{ current_user.username }}</h5>
+            {% if current_user.is_authenticated %}
+                {% for post in user_posts %}
+                    <div class="container">
+                       <h3>
+                           <a href="{{ url_for('post_detail', post_id = post.id) }}">{{ post.title }}</a>
+                       </h3> 
+                       <p>{{ post.content }}</p>
+                    </div>
+                {% endfor %}
+            {% else %}
+            <h2></h2>
+        
+            {% endif %}
+            
         </div>
 
 <!--NewsFeed Must Scroll-->

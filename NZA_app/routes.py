@@ -6,17 +6,13 @@ from flask_login import login_required, login_user, current_user, logout_user
 
 import jwt
 
-from NZA_app.forms import UserForm, LoginForm
-#from NZA_app.token_verification import token_required
+from NZA_app.forms import UserForm, LoginForm, PostForm
+#from NZA_app.token_verification import token_required as login_required
 
 
 @app.route('/')
 def home():
-<<<<<<< HEAD
     return render_template('index.html')
-=======
-    return render_template('home.html')
->>>>>>> 5d1829cf882aee9482de28a835b1f4c50e0ac5f3
 
 @app.route('/who')
 def who():
@@ -25,10 +21,6 @@ def who():
 @app.route('/what')
 def what():
     return render_template('what.html')
-
-@app.route('/notes')
-def notes():
-    return render_template('notes.html')
 
 @app.route('/users/register', methods = ['GET', 'POST'])
 def register():
@@ -55,7 +47,7 @@ def login():
     logged_user = User.query.filter(User.email == email).first()
     if logged_user and check_password_hash(logged_user.password, password):
         login_user(logged_user)
-        return redirect(url_for('get_key'))
+        return redirect(url_for('notes'))
     return render_template('login.html', login_form = form)
 
 @app.route('/logout')
@@ -99,12 +91,12 @@ def notes():
         title = form.title.data
         content = form.content.data
         user_id = current_user.id
-        post = Post(title,content,user_id)
+        post = Casenote(title,content,user_id)
 
         db.session.add(post)
 
         db.session.commit()
-        return redirect(url_for('home'))
+        return redirect(url_for('notes'))
     return render_template('notes.html', post_form = form)
 
 # post detail route to display info about a post
