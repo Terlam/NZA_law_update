@@ -1,5 +1,5 @@
 from NZA_app import app, db
-from NZA_app.models import Client, client_schema, clients_schema, User, check_password_hash
+from NZA_app.models import Casenote, User, check_password_hash
 from flask import jsonify, request, render_template, redirect, url_for
 
 from flask_login import login_required, login_user, current_user, logout_user
@@ -11,10 +11,22 @@ from NZA_app.forms import UserForm, LoginForm
 
 
 @app.route('/')
-def index():
+def home():
     return render_template('index.html')
 
-@app.route('users/register', methods = ['GET', 'POST'])
+@app.route('/who')
+def who():
+    return render_template('who.html')
+
+@app.route('/what')
+def what():
+    return render_template('what.html')
+
+@app.route('/notes')
+def notes():
+    return render_template('notes.html')
+
+@app.route('/users/register', methods = ['GET', 'POST'])
 def register():
     form = UserForm()
     if request.method == 'POST' and form.validate():
@@ -41,6 +53,12 @@ def login():
         login_user(logged_user)
         return redirect(url_for('get_key'))
     return render_template('login.html', login_form = form)
+
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for('home'))
 
 @app.route('/users/getkey', methods = ['GET'])
 def get_key():
@@ -71,3 +89,57 @@ def refresh_key():
 
 #Endpoint for Creating Case Notes!!
 
+
+# Creation of posts route
+@app.route('/notes', methods = ['GET','POST'])
+@login_required
+def posts():
+    form = PostForm()
+    if request.method =='POST' and form.validate():
+        title = form.title.data
+        content = form.content.data
+        user_id = current_user.id
+        post = Post(title,content,user_id)
+
+        db.session.add(post)
+
+        db.session.commit()
+        return redirect(url_for('home'))
+    return render_template('notes.html', post_form = form)
+
+
+# Post detail route to display info about a post
+@app.route('/notes/<int:post_id>')
+@login_required
+def post_detail(post_id):
+    post = Post.query.get_or_404(post_id)
+    return render_template('post_detail.html', post = post)
+
+@app.route('/notes/update/<int:post_id>', methods = ['GET','POST'])
+@login_required
+def post_update(post_id):
+    post = Post.query.get_or_404(post_id)
+    form = PostForm()
+
+    if request.method == 'POST' and form.validate():
+        title = form.title.data
+        content = form.content.data
+        user_id = current_user.id
+
+        # Update the Database with new Info
+        post.title = title
+        post.content = content
+        post.user_id = user_id
+
+        # Commit the changes to the database
+        db.session.commit()
+        return redirect(url_for('home'))
+    return render_template('post_update.html', update_form = form)
+
+@app.route('/notes/delete/<int:post_id>',methods = ['GET', 'POST', 'DELETE'] )
+@login_required
+def post_delete(post_id):
+    post = Post.query.get_or_404(post_id)
+    db.session.delete(post)
+    db.session.commit()
+    return redirect(url_for('home'))

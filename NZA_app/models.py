@@ -17,7 +17,7 @@ class Casenote(db.Model):
     title = db.Column(db.String(100))
     content = db.Column(db.String(300))
     date_created = db.Column(db.DateTime, nullable = False, default = datetime.utcnow)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable = False)
+    user_id = db.Column(db.String(200), db.ForeignKey('user.id'), nullable = False)
 
     def __init__(self,title,content,user_id):
         self.title = title
@@ -34,24 +34,24 @@ def load_user(user_id):
     return User.query.get(user_id)
 
 class User(db.Model,UserMixin):
-    id = db.Column(db.String(100), primary_key = True)
-    name = db.Column(db.String(75), nullable = False)
-    email = db.Column(db.String(60))
-    password = db.Column(db.String(50), nullable = False)
-    token = db.Column(db.String(300))
-    date_create = db.Column(db.DateTime, nullable = False, default = datetime.utcnow)
-    token_refresh = db.Column(db.Boolean, default = False)
-    date_update = db.Column(db.DateTime)
+    id = db.Column(db.String(200), primary_key = True)
+    name = db.Column(db.String(100), nullable = False)
+    email = db.Column(db.String(150))
+    password = db.Column(db.String(256), nullable = False)
+    token = db.Column(db.String(400))
+    date_created = db.Column(db.DateTime, nullable = False, default = datetime.utcnow)
+    token_refreshed = db.Column(db.Boolean, default = False)
+    date_refreshed = db.Column(db.DateTime)
 
-    def __init__(self,name,email,password, id = id):
+    def __init__(self,name,email,password,id = id):
         self.id = str(uuid.uuid4())
         self.name = name
         self.email = email
-        self.password = self.set_password(password)
+        self.password = self.set_pasword(password)
 
-    def set_password(self, password):
+    def set_pasword(self, password):
         self.pw_hash = generate_password_hash(password)
         return self.pw_hash
-    
+
     def __repr__(self):
-        return f'{self.name} is now available to edit.'
+        return f'{self.name} has been created successfully! Date: {self.date_created}'

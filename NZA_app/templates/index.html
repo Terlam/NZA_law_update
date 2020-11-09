@@ -5,7 +5,7 @@
     <Header>
         <!--Logo Placement Holder-->
         <div class="logo">
-           <a href="index.html"> <img src="https://pingpong90.github.io/images/nza_logo.jpg"alt="Logo Placement Holder"></a>
+           <a href="{{url_for('home') }}"> <img src="https://pingpong90.github.io/images/nza_logo.jpg"alt="Logo Placement Holder"></a>
         </div>
 
         <!--Nav Bar-->
@@ -14,13 +14,11 @@
 
             <ul>
 
-                <li><a href="who.html">WHO WE ARE |</a></li>
-                <li><a href="what.html">WHAT WE DO |</a></li>
-
-                <li><a href="https://nzalaw.com/news/">NEWS & EVENTS |</a></li>
-                <li><a href="https://nzalaw.com/practice-group/commercial/">WHERE WE WORK |</a></li>
-                <li><a href="https://nzalaw.com/contact/">CONTACT US</a></li>
-
+                <li><a href="{{url_for('who') }}">WHO WE ARE |</a></li>
+                <li><a href="{{url_for('what') }}">WHAT WE DO |</a></li>
+                <li><a href="{{url_for('register') }}">REGISTER |</a></li>
+                <li><a href="{{url_for('login') }}">LOGIN |</a></li>
+                <li><a href="{{url_for('notes') }}">CASE NOTES</a></li>
             </ul>  
         </div>  
     </Header>
@@ -62,7 +60,5 @@
         <!--Contact Info-->
        
 </div>
-<#/body>
-<#/html>
 
 {% endblock content %}

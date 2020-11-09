@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>What We Do</title>
-    <link rel="stylesheet" href="css/who.css">
+    <link rel="stylesheet" href="../static/css/who.css">
 </head>
 <body>    
 
@@ -12,7 +12,7 @@
             <Header>    
                 <!-- Logo -->
                 <div class="logo">
-                    <a href="index.html">
+                    <a href="{{url_for('home') }}">
                          <img src="https://pingpong90.github.io/images/nza_logo.jpg"alt="NZA Logo">
                     </a>
                 </div>
@@ -20,11 +20,11 @@
                 <!-- Navigation List -->
                 <div class="navbar">
                     <ul>
-                        <li><a href="who.html">WHO WE ARE |</a></li>
-                        <li><a href="what.html">WHAT WE DO |</a></li>
-                        <li><a href="https://nzalaw.com/news/">NEWS & EVENTS |</a></li>
-                        <li><a href="https://nzalaw.com/practice-group/commercial/">WHERE WE WORK |</a></li>
-                        <li><a href="https://nzalaw.com/contact/">CONTACT US</a></li>
+                        <li><a href="{{url_for('who') }}">WHO WE ARE |</a></li>
+                        <li><a href="{{url_for('what') }}">WHAT WE DO |</a></li>
+                        <li><a href="{{url_for('register') }}">REGISTER |</a></li>
+                        <li><a href="{{url_for('login') }}">LOGIN |</a></li>
+                        <li><a href="{{url_for('notes') }}">CASE NOTES</a></li>
                     </ul>
                 </div>
             </Header>
@@ -74,10 +74,10 @@
             <!-- Rectangle Images Terrell-->
 
             <div class="rectangles" >
-                <img src="images/subrogation.png" alt="">
-                <img src="images/litigation.png" alt="">
-                <img src="images/business.png" alt="">
-                <img src="images/transportation.png" alt="">
+                <img src="..static/images/subrogation.png" alt="">
+                <img src="..static/images/litigation.png" alt="">
+                <img src="..static/images/business.png" alt="">
+                <img src="..static/images/transportation.png" alt="">
                 <!-- <img src="https://via.placeholder.com/200x100" alt=""></div> -->
                 <!-- <img src="https://via.placeholder.com/200x100" alt=""></div> -->
             </div>
@@ -87,14 +87,14 @@
                 <hr class=hr3>
                 <div class=“navbar navfooter”>
                     <ul>
-                        <li><a href=“/who.html”>WHO WE ARE |</a></li>
-                        <li><a href=“/what.html”>WHAT WE DO |</a></li>
-                        <li><a href=“https://nzalaw.com/news/”>NEWS & EVENTS |</a></li>
-                        <li><a href=“https://nzalaw.com/practice-group/commercial/”>WHERE WE WORK |</a></li>
-                        <li><a href=“https://nzalaw.com/contact/”>CONTACT US</a></li>
+                        <li><a href="{{url_for('who') }}">WHO WE ARE |</a></li>
+                        <li><a href="{{url_for('what') }}">WHAT WE DO |</a></li>
+                        <li><a href="{{url_for('register') }}">REGISTER |</a></li>
+                        <li><a href="{{url_for('login') }}">LOGIN |</a></li>
+                        <li><a href="#">CONTACT US</a></li>
                     </ul>
                 </div>
-                <p class=“copyright”> ©2020 Chicago Coding Temple // Website Design by the Terlan Repository</p>
+                <p class=“copyright”> ©2020 Chicago Coding Temple // Website Design by the TerlaM Repository</p>
             </footer>
         </div>
     </div>
